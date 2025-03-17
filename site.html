@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTL Member Discount</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+   }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #002b4d, #045ea4);
+            color: #fff;
+   }
+        h2 {
+            font-size: 24px;
+   }
+        .discount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffeb3b;
+   }
+        .family {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+   }
+        .family strong {
+            display: block;
+            padding: 5px;
+   }
+        .sponsors {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   }
+        .sponsors h1 {
+            color: #ff4081;
+   }
+        .sponsors div {
+            font-size: 18px;
+            padding: 5px;
+            color: #333;
+   }
+        .dtl-logo img {
+            max-width: 200px;
+            height: auto;
+            margin-top: 20px;
+   }
+        .sponsors-logo {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+   }
+        .sponsors-logo img {
+            height: 170px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+   }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+   }
+        .popup h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+   }
+        .popup p {
+            font-size: 18px;
+            color: #333;
+   }
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #045ea4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+   }
+        .popup button:hover {
+            background: #003b6f;
+   }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+   }
+        .strong {
+            font-weight: bold;
+   }
+    </style>
+</head>
+<body>
+    <div class="dtl-logo">
+        <img src="https://i.postimg.cc/4ypzbmQH/64a8a742-bb84-4695-8b6e-64f5970c5bc5.jpg" alt="DTL Logo">
+    </div>
+    <div class="container" id="member-info">
+    </div>
+    <div class="sponsors">
+        <h1>Partners</h1>
+        <div>صيدليات فياض</div>
+<div>مركز تسلا للآشعة</div>
+<div>معمل عناية للتحاليل الطبية</div>
+<div>د محمد طراوه للاسنان</div>
+<div>د احمد غنيم للأسنان</div>
+<div>د احمد كريم / علاج طبيعي</div>
+<div>د احمد حافظ / نسا</div>
+<div>د علاء الغول / مسالك</div>
+<div>د محمد علي الوهاب / مخ و اعصاب</div>
+<div>د اسماء محمد / جلديه</div>
+<div>د اسماعيل فهمي / جراحه اطفال</div>
+<div>د ياسر عبد التواب / رمد</div>
+<div>د محمد ابو غانم / باطنه</div>
+    </div>
+    <div class="sponsors-logo">
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=61561551351072"><img src="https://i.postimg.cc/HsQ2bP6v/c15abaf5-9b78-40a4-b6d5-0ba827d56796.jpg" alt="Sponsor 1"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=61551056803886"><img src="https://i.postimg.cc/kgqysFZJ/fc60310f-4fd7-4130-b0af-8d4ac5a2aa48.jpg" alt="Sponsor 2"></a>
+        <a target="_blank" href="https://www.facebook.com/Dr.ahmed.emad.ghoneim?mibextid=ZbWKwL"><img src="https://i.postimg.cc/ZqM6TfyG/a3d84376-0d6e-459e-98c2-da084fca6cb8.jpg" alt="Sponsor 3"></a>
+        <a target="_blank" href="https://www.facebook.com/dr.ismailfahmi.pedsurgclinic"><img src="https://i.postimg.cc/jdrTgPjK/efcc5994-e944-44ce-9477-5bd3cf23c079.jpg" alt="Sponsor 4"></a>
+        <a target="_blank" href="https://www.facebook.com/fayadpharmacies"><img src="https://i.postimg.cc/KcQP8rgv/c4141d70-854d-4ee8-bf6c-74e538da92aa.jpg" alt="Sponsor 5"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100083354858138"><img src="https://i.postimg.cc/P5qTkhn5/8b73c877-0d57-49ed-91fa-d3191135f496.jpg" alt="Sponsor 6"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100070096189614"><img src="https://i.postimg.cc/52cvyPpv/e26307df-8a5e-4864-8615-027554909a4c.jpg" alt="Sponsor 9"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100063760911644&mibextid=ZbWKwL"><img src="https://i.postimg.cc/dQ5jQPhx/729b5735-775c-452c-adfd-5f727a669d10.jpg" alt="Sponsor 10"></a>
+        <a target="_blank" href="https://www.facebook.com/share/18t6ah4DJ8/"><img src="https://i.postimg.cc/j5bCr56J/photo-5958505144918328575-y.jpg" alt="Sponsor 11"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100063803455125&mibextid=ZbWKwL"><img src="https://i.postimg.cc/t4DHggHx/e9425605-7aaa-4cb7-a7ac-a275d1bf8db6.jpg" alt="Sponsor 12"></a>
+        <a target="_blank" href="https://www.facebook.com/NHC.EGY"><img src="https://i.postimg.cc/mkZYBV3M/66eadb3f-05b5-4208-864a-87007c229f16.jpg" alt="Sponsor 13"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100083150807700"><img src="https://i.postimg.cc/YSLZg1QD/024ae426-ebdf-4a82-83c8-476c3e3f0233.jpg" alt="Sponsor 14"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100002432556983&mibextid=ZbWKwL"><img src="https://i.postimg.cc/BvgzZP5W/cbca8ece-71ad-462a-a7fe-d83fb0aaa731.jpg" alt="Sponsor 7"></a>
+        <img src="https://i.postimg.cc/rFH0bf73/b41e1b69-dd17-48c7-98be-7542a806e93f.jpg" alt="Sponsor 8">
+
+    </div>
+    <div class="popup" id="discount-popup">
+        <h2 style="margin-bottom: 10px;">Discount Information</h2>
+        <div class="strong">مركز غنيم للاسنان - مركز د محمد رمضان</div>
+        <div>الكشف مجانا</div>
+        <div>%حشو العصب خصم 25</div>
+        <div>%باقي الخدمات خصم 30</div>
+        <br/>
+        <div class="strong">صيدليات فياض</div>
+        <div>%الادوية المحلية خصم 15</div>
+        <div>%الادوية المستوردة خصم 7</div>
+        <br/>
+        <div class="strong">%معمل عناية خصم 50</div>
+        <br/>
+        <div class="strong">%مركز تسلا للاشعة خصم 50</div>
+        <br/>
+        <div class="strong">%مركز علاجك طبيعي خصم 50</div>
+        <br/>
+        <div class="strong">%باقي العيادات خصم 50</div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <script>
+        const members = [
+    {
+        "id": 1,
+        "name": "احمد عبدالمعطى",
+        "position": "president",
+        "familyMembers": ["عبدالمعطى عبدالكريم", "صبرية عبدالعزيز", "محمد عبدالمعطى"]},
+    {
+        "id": 2,
+        "name": "محمود فارس الشيخ",
+        "position": "vice president",
+        "familyMembers": ["فارس الشيخ", "حنان السيد", "سعيد فارس الشيخ", "شروق فارس الشيخ", "شهد فارس الشيخ", "محمد فارس الشيخ"]},
+    {
+        "id": 3,
+        "name": "حبيبة عارف",
+        "position": "vice FR",
+        "familyMembers": ["عارف عدلان", "سناء يونس", "عبدالرحمن عارف", "حنين عارف"]},
+    {
+        "id": 4,
+        "name": "أسامة باسم مسلم",
+        "position": "Head FR",
+        "familyMembers": ["باسم مسلم طلبة", "كريمة عبدالمنعم على", "رغدة باسم مسلم"]},
+    {
+        "id": 5,
+        "name": "تيسير محمد عبدالقادر",
+        "position": "vice OC",
+        "familyMembers": ["محمد عبدالقادر", "وردة شعيب", "احمد محمد عبدالقادر"]},
+    {
+        "id": 6,
+        "name": "تسنيم محمود اسماعيل",
+        "position": "head HR",
+        "familyMembers": ["محمود اسماعيل", "سعاد البنا", "سعيد محمود اسماعيل", "بسملة محمود اسماعيل"]},
+    {
+        "id": 7,
+        "name": "عصام كمال محمد أبو على",
+        "position": "Head OC",
+        "familyMembers": ["كمال محمد أبو على", "أميرة مصطفى أبو", "احمد كمال أبو على", "اهداء كمال أبو على", "أسماء كمال أبو على", "محمد كمال أبو على"]},
+    {
+        "id": 8,
+        "name": "بسمة الرامى",
+        "position": "vice HR",
+        "familyMembers": ["سيد احمد محمد الرامى", "هناء العربى", "سهيلة الرامى", "شيماء الرامى", "الاء الرامى", "اسماء الرامى"]},
+    {
+        "id": 9,
+        "name": "حنين ياسر",
+        "position": "vice PC",
+        "familyMembers": ["ياسر يونس", "رضا الششتاوى", "غرام ياسر", "رؤى ياسر"]},
+    {
+        "id": 10,
+        "name": "أية حجازى",
+        "position": "head PC",
+        "familyMembers": ["اشرف حجازى", "همت عبدالله", "محمد حجازى", "يوسف حجازى", "مالك حجازى"]},
+    {
+        "id": 11,
+        "name": "اسراء مختار السعدنى",
+        "position": "head PR",
+        "familyMembers": ["مختار السعدنى", "سنية فتح عرفة", "محمد مختار السعدنى", "اسماء مختار السعدنى", "أمنية مختار السعدنى", "الاء مختار السعدنى"]},
+    {
+        "id": 12,
+        "name": "فاطمة محمد ابو اللبن",
+        "position": "vice MP",
+        "familyMembers": ["شيرين محمد الطنايحى", "منة الله محمد ابو اللبن", "فدوى محمد ابو اللبن", "يمنى محمد ابو اللبن"]},
+    {
+        "id": 13,
+        "name": "ميار ابراهيم القفاص",
+        "position": "vice MP",
+        "familyMembers": ["ابراهيم القفاص", "شيرين عبدالحميد متولى", "زياد ابراهيم القفاص", "عمر ابراهيم القفاص", "انس ابراهيم القفاص"]},
+    {
+        "id": 14,
+        "name": "محمد مصطفى الشيخ",
+        "position": "vice PR",
+        "familyMembers": ["مصطفى عبدالله الشيخ", "وفاء محمد على أبو احمد", "ايثار مصطفى الشيخ", "رحمة مصطفى الشيخ", "رؤى مصطفى الشيخ"]},
+    {
+        "id": 15,
+        "name": "باسم عبدالروؤف عبدالسلام الجزار",
+        "position": "vice OC",
+        "familyMembers": ["عبدالروؤف عبدالسلام الجزار", "منال الصافى زكى الجزار", "وليد عبدالروؤف عبدالسلام الجزار", "مروان عبدالروؤف عبدالسلام الجزار"]},
+    {
+        "id": 16,
+        "name": "أمنية ابراهيم عثمان",
+        "position": "head MP",
+        "familyMembers": ["ابراهيم عثمان", "هدى عبدالله الديب", "احمد ابراهيم عثمان", "محمد ابراهيم عثمان"]},
+    {
+        "id": 17,
+        "name": "هيام أشرف الطنطاوي",
+        "position": "FR member",
+        "familyMembers": ["أشرف أحمد الطنطاوي", "دعاء محمد سليم", "آية أشرف الطنطاوي"]},
+    {
+        "id": 18,
+        "name": "محمد وليد حسن عشيبه",
+        "position": "fr member",
+        "familyMembers": ["وليد حسن عشيبه", "ايمان عبد المقصود هاشم", "بسمه وليد حسن", "ولاء وليد حسن"]},
+    {
+        "id": 19,
+        "name": "علي ربيع علي النجار",
+        "position": "fr member",
+        "familyMembers": ["ربيع علي النجار", "كامله محمود عبد الرازق", "شهد ربيع علي النجار", "شيماء ربيع علي النجار"]},
+    {
+        "id": 20,
+        "name": "عبد الرحمن صلاح المصري",
+        "position": "fr member",
+        "familyMembers": ["صلاح كامل المصري", "صباح احمد رحاب", "اسامه صلاح المصري", "رائد صلاح المصري", "عمر صلاح المصري"]},
+    {
+        "id": 21,
+        "name": "رويدا عصام الرامي",
+        "position": "fr member",
+        "familyMembers": ["عصام سيد الرامي", "مها صبري درويش", "وسام عصام الرامي", "ريم عصام الرامي", "دينا عصام الرامي"]},
+    {
+        "id": 22,
+        "name": "نورهان جابر عشوش",
+        "position": "fr member",
+        "familyMembers": ["جابر جابر عشوش", "عايده رمضان عبد المقصود", "احمد جابر عشوش", "يوسف جابر عشوش"]},
+    {
+        "id": 23,
+        "name": "احمد حسانين عبد الحميد حسانين",
+        "position": "fr member",
+        "familyMembers": ["حسانين عبد الحميد حسانين ندا", "هانم محمود محمد فتح الله", "عمر حسانين عبد الحميد", "الاء حسانين عبد الحميد", "ايه حسانين عبد الحميد"]},
+    {
+        "id": 24,
+        "name": "مريم محمد احمد عمرو",
+        "position": "fr member",
+        "familyMembers": ["محمد احمد عمرو", "ايمان عرفه عبدربه", "خلود محمد احمد عمرو", "احمد محمد احمد عمرو", "يوسف محمد احمد عمرو"]},
+    {
+        "id": 25,
+        "name": "روان فخري الجرجاوي",
+        "position": "fr member",
+        "familyMembers": ["فخري صبحي الجرجاوي", "ابتسام نبيه النحاس", "رنين فخري الجرجاوي", "رنا فخري الجرجاوي", "يوسف فخري الجرجاوي"]},
+    {
+        "id": 26,
+        "name": "محمود الشرقاوي جوده",
+        "position": "fr member",
+        "familyMembers": ["الشرقاوي جوده احمد", "كريمة عاصم عبد الرحمن", "اسماء الشرقاوي جوده", "زينب الشرقاوي جوده", "محمد الشرقاوي جوده"]},
+    {
+        "id": 27,
+        "name": "آيه وائل محمد محمد أبو شامه",
+        "position": "fr member",
+        "familyMembers": ["وائل محمد محمد أبو شامه", "ريماس وائل محمد ابو شامه", "أماني إبراهيم شتا", "محمد وائل محمد أبو شامه"]},
+    {
+        "id": 28,
+        "name": "عزة محمد عبدالجليل أبو النجاه",
+        "position": "member MP",
+        "familyMembers": ["محمد عبدالجليل أبو النجاه", "سحر عنتر عشرى ابو خزيمة", "على محمد عبدالجليل أبو النجاه", "سماح محمد عبدالجليل أبو النجاه", "أمنية محمد عبدالجليل أبو النجاه", "عبدالرحمن محمد عبدالجليل أبو النجاه"]},
+    {
+        "id": 29,
+        "name": "اميرة محمد الديب",
+        "position": "fr member",
+        "familyMembers": ["محمد ابراهيم الديب", "شاكرة كامل", "فاطمة الديب", "ابراهيم الديب"]},
+    {
+        "id": 30,
+        "name": "حبيبة مصطفى اسماعيل",
+        "position": "member MP",
+        "familyMembers": ["مصطفى محمد اسماعيل", "مها محمد أبو زيد", "منة الله مصطفى اسماعيل", "روان مصطفى اسماعيل"]},
+    {
+        "id": 31,
+        "name": "رواء رضا سليمان حشيش",
+        "position": "Mp member",
+        "familyMembers": ["بدريه فتحي ابراهيم فرحات"]},
+    {
+        "id": 32,
+        "name": "اروى ايمن عبدالعال ابواسماعيل",
+        "position": "member HR",
+        "familyMembers": ["نبيل ايمن عبدالعال ابو اسماعيل", "ايمان عبدالعزيز حرحش", "تيسير عبدالرحمن الشيخ"]},
+    {
+        "id": 33,
+        "name": "منار خيرى",
+        "position": "PC member",
+        "familyMembers": ["خيرى عبد العزيز", "وفاء محمد", "محمود خيرى", "معتز خيرى"]},
+    {
+        "id": 34,
+        "name": "خلود محمد عبدالقادر شكر",
+        "position": "member MP",
+        "familyMembers": ["محمد عبدالقادر شكر", "دعاء محمد طه شكر", "خالد محمد عبدالقادر شكر", "عمرو محمد عبدالقادر شكر"]},
+    {
+        "id": 35,
+        "name": "ابتهال عيد",
+        "position": "PC member",
+        "familyMembers": ["عيد عبد العليم", "حنان سعيد", "إيمان عيد", "آلاء عيد"]},
+    {
+        "id": 36,
+        "name": "شهد سمير",
+        "position": "PC member",
+        "familyMembers": ["سمير فتحى", "سماح عبد الفتاح", "روميساء سمير", "ايثار سمير", "رودينا سمير", "يمنى سمير"]},
+    {
+        "id": 37,
+        "name": "آلاء عادل",
+        "position": "PC member",
+        "familyMembers": ["عادل عبد السميع", "لبنى عبد العزيز", "عبد الرحمن عادل", "هاجر عادل"]},
+    {
+        "id": 38,
+        "name": "نورهان ماهر",
+        "position": "PC member",
+        "familyMembers": ["ماهر سعيد", "ايمان عبد المعز", "أحمد ماهر", "محمد ماهر", "سعيد عبد الستار"]},
+    {
+        "id": 39,
+        "name": "أسماء محمد",
+        "position": "PC member",
+        "familyMembers": ["إسراء محمد", "علاء محمد", "محمود محمد", "محمد عبد المجيد", "فاتن رفعت"]},
+    {
+        "id": 40,
+        "name": "ماهر سالم",
+        "position": "PC member",
+        "familyMembers": ["سالم ماهر", "عمر سالم", "روان سالم", "منى كامل"]},
+    {
+        "id": 41,
+        "name": "على سعد",
+        "position": "PC member",
+        "familyMembers": ["سعد أحمد", "كريمة رمضان", "أحمد سعد", "محمد سعد", "نهى سعد"]},
+    {
+        "id": 42,
+        "name": "فاطمة مجاهد",
+        "position": "PC member",
+        "familyMembers": ["مجاهد السيد", "بسمة حسن", "محمد مجاهد", "محمود محاهد", "أسماء مجاهد"]},
+    {
+        "id": 43,
+        "name": "يوسف عاصم",
+        "position": "PC member",
+        "familyMembers": ["عاصم إبراهيم", "آمال محمد", "نورا عاصم", "ياسمين عاصم", "رنا عاصم"]},
+    {
+        "id": 44,
+        "name": "نوران محمد",
+        "position": "PC member",
+        "familyMembers": ["عاصم محمد", "سميرة أحمد"]},
+    {
+        "id": 45,
+        "name": "ضى سرحان",
+        "position": "PC member",
+        "familyMembers": ["رحمة سرحان", "فاتن سرحان", "أحمد سرحان", "شيرين شوقى", "سرحان محمد", "خدوجة عبد الحليم"]},
+    {
+        "id": 46,
+        "name": "ياسمين السيد",
+        "position": "PC member",
+        "familyMembers": ["السيد عبد الفتاح", "همت محمد", "ياسين السيد"]},
+    {
+        "id": 47,
+        "name": "هدى عبدالله السقا",
+        "position": "member HR",
+        "familyMembers": ["عبدالله السقا", "لوزه الحوفى", "ايمان عبدالله السقا", "صفاء عبدالله السقا", "محمد عبدالله السقا"]},
+    {
+        "id": 48,
+        "name": "علا السيد محمد حسين",
+        "position": "member HR",
+        "familyMembers": ["عزيزة مرضى سليم", "إسلام السيد محمد حسين", "منى السيد محمد حسين"]},
+    {
+        "id": 49,
+        "name": "ملك هانى محمد شلش",
+        "position": "member HR",
+        "familyMembers": ["هانى محمد شلش", "شرين السيد حموده", "نور هانى محمد شلش", "محمد هانى محمد شلش", "اسلام هانى محمد شلش"]},
+    {
+        "id": 50,
+        "name": "عبدالرحمن رضا حمد",
+        "position": "member HR",
+        "familyMembers": ["رضا حمد", "نجلاء السيسى", "ايه رضا حمد", "محمد رضا حمد"]},
+    {
+        "id": 51,
+        "name": "منة الله محمد صادق",
+        "position": "OC member",
+        "familyMembers": ["محمد صادق", "انتصار حسن", "محمود محمد صادق", "مودة محمد صادق", "احمد محمد صادق"]},
+    {
+        "id": 52,
+        "name": "مريم السعيد زايد",
+        "position": "OC member",
+        "familyMembers": ["السعيد عبد الصمد زايد", "ناهد محمد احمد", "احمد السعيد زايد", "اسماء السعيد زايد", "محمد السعيد زايد"]},
+    {
+        "id": 53,
+        "name": "هند خميس السقا",
+        "position": "OC member",
+        "familyMembers": ["خميس السعيد السقا", "غادة عبد المقصود سويد", "محمد خميس السقا", "احمد خميس السقا"]},
+    {
+        "id": 54,
+        "name": "إيمان عيد عبد العليم متولى",
+        "position": "OC member",
+        "familyMembers": ["عيد عبد العليم متولى عز العرب", "حنان سعيد رمضان", "الاء عيد", "ابتهال عيد"]},
+    {
+        "id": 55,
+        "name": "خالد وليد احمد فرج",
+        "position": "OC member",
+        "familyMembers": ["وليد احمد فرج", "سامية محمد عبد الهادى", "احمد وليد فرج", "مروان وليد فرج"]},
+    {
+        "id": 56,
+        "name": "إيمان عزيز برغش",
+        "position": "OC member",
+        "familyMembers": ["عزيز صدقى برغش", "رشا محمد مهينة", "محمد عزيز برغش", "بسنت عزيز برغش"]},
+    {
+        "id": 57,
+        "name": "آية ياسر أبو زيد",
+        "position": "OC member",
+        "familyMembers": ["ياسر أبو زيد", "ليلى", "أميرة ياسر أبو زيد", "داليا ياسر أبو زيد"]},
+    {
+        "id": 58,
+        "name": "نوران هانى عبد الفتاح غازى",
+        "position": "OC member",
+        "familyMembers": ["هانى عبد الفتاح غازى", "عايدة جمال عبيد", "احمد هانى", "محمد هانى"]},
+    {
+        "id": 59,
+        "name": "أفنان الإمام الحسين",
+        "position": "OC member",
+        "familyMembers": ["فاطمة فريج ابو العلا", "أسماء الإمام الحسين", "محمد الإمام الحسين", "أروى الإمام الحسين", "تاليا محمد الإمام الحسين"]},
+    {
+        "id": 60,
+        "name": "أميرة عبد العال رأفت كفورى",
+        "position": "OC member",
+        "familyMembers": ["عبد العال رأفت كفورى", "أمل محمد محمد فراج", "مصطفى عبد العال رأفت كفورى", "ندى عبد العال رأفت كفورى", "شيماء عبد العال رأفت كفورى"]},
+    {
+        "id": 61,
+        "name": "مريم بكر",
+        "position": "pr member",
+        "familyMembers": ["بكر عبد السلام جمال", "هبه فخري حموده", "ندي بكر عبد السلام جمال", "منه الله بكر عبد السلام جمال", "جنه بكر عبد السلام جمال", "عمر بكر عبد السلام جمال"]},
+    {
+        "id": 62,
+        "name": "ريهام رمضان",
+        "position": "pr member",
+        "familyMembers": ["رمضان عطيه حمودة", "وردة محمد عبدالهادي خليفه", "يوسف رمضان عطيه حمودة", "محمد رمضان عطيه حمودة"]},
+    {
+        "id": 63,
+        "name": "عبد الرحمن نصر الجارحي",
+        "position": "pr member",
+        "familyMembers": ["زياد نصر الجارحي", "احمد نصر الجارحي", "نصر الجارحي"]},
+    {
+        "id": 64,
+        "name": "نداء محمد",
+        "position": "pr member",
+        "familyMembers": ["محمد عبد الفتاح أبو طالب", "رحاب احمد", "الزهراء محمد عبد الفتاح ابو طالب", "آلاء محمد عبد الفتاح ابو طالب", "وفاء محمد عبد الفتاح ابو طالب", "عبد الفتاح محمد عبد الفتاح ابو طالب"]},
+    {
+        "id": 65,
+        "name": "محمد يسري عبد العظيم",
+        "position": "pr member",
+        "familyMembers": ["يسري عبد العظيم احمد", "هناء ندا", "كريم يسري عبد العظيم", "احمد يسري عبد العظيم"]},
+    {
+        "id": 66,
+        "name": "ندي اشرف",
+        "position": "pr member",
+        "familyMembers": ["السيد السعدني", "أشرف السيد السعدني", "مها صبري القبراوي", "أميرة أشرف السيد السعدني", "محمد اشرف السيد السعدني", "عمر اشرف السيد السعدني"]},
+    {
+        "id": 67,
+        "name": "مريم احمد الديب",
+        "position": "pr member",
+        "familyMembers": ["احمد ابراهيم الديب", "رشا رفعت الفيل", "ضحي احمد الديب", "رغد احمد الديب"]},
+    {
+        "id": 68,
+        "name": "ميرنا حمدي ابو علي",
+        "position": "pr member",
+        "familyMembers": ["نرمين حمدي ابو علي", "محمد حمدي ابو علي", "حمدي محمود ابو علي", "اماني عبد الله الجمال"]},
+    {
+        "id": 69,
+        "name": "هاجر كمال القصاص",
+        "position": "pr member",
+        "familyMembers": ["كمال خضر القصاص", "زينب السيد سعد", "حسين كمال القصاص", "محمد كمال القصاص", "ساره كمال القصاص"]},
+    {
+        "id": 70,
+        "name": "على محمد زايد",
+        "position": "pr member",
+        "familyMembers": ["محمد محمد زايد", "اسماء على الجرف", "احمد محمد زايد", "اسيل محمد زايد"]},
+    {
+        "id": 71,
+        "name": "نغم أكرم محمد عبداللطيف شيخ روحه",
+        "position": "member HR",
+        "familyMembers": ["أكرم محمد عبداللطيف شيخ روحه", "هبه عبدالمقصود شيخ روحه", "ندى أكرم محمد عبداللطيف شيخ روحه", "محمد أكرم محمد عبداللطيف شيخ روحه"]},
+    {
+        "id": 72,
+        "name": "محمد احمد بدر",
+        "position": "member HR",
+        "familyMembers": ["احمد بدر", "عبدالعزيز احمد بدر", "منذر احمد بدر", "اسيل احمد بدر"]},
+    {
+        "id": 73,
+        "name": "ملك حامد حافظ كموش",
+        "position": "member HR",
+        "familyMembers": ["دنيا حامد حافظ كموش", "محمد حامد حافظ كموش", "دارين محمد حسانين"]},
+    {
+        "id": 74,
+        "name": "ميادة أسامة الشافعى",
+        "position": "member HR",
+        "familyMembers": ["احمد أسامة الشافعى", "ايه أسامة الشافعى", "السيد أسامة الشافعى"]},
+    {
+        "id": 75,
+        "name": "نورهان كارم محمود أبو على",
+        "position": "member HR",
+        "familyMembers": ["كارم محمود أبو على", "فضيلة محمد فهيم", "محمود كارم محمود أبو على", "رانيا كارم محمود أبو على", "ايناس كارم محمود أبو على"]},
+    {
+        "id": 76,
+        "name": "منة ابو اللبن",
+        "position": "member HR",
+        "familyMembers": ["شرين الطنايهى", "فدوى ابو اللبن", "فاطمة ابو اللبن", "يمنى ابو اللبن"]},
+    {
+        "id": 77,
+        "name": "شهد هانى عياد",
+        "position": "member HR",
+        "familyMembers": ["هانى عياد", "صباح عطا"]},
+    {
+        "id": 78,
+        "name": "اسراء السيد حسن عبدالكريم",
+        "position": "member HR",
+        "familyMembers": ["شيماء احمد عبدالهادى", "الاء السيد حسن عبدالكريم", "شيماء السيد حسن عبدالكريم", "اسينات السيد حسن عبدالكريم"]},
+    {
+        "id": 79,
+        "name": "دينا أيمن سعيد داوود",
+        "position": "member HR",
+        "familyMembers": ["أيمن سعيد داوود", "داليا رشدى داوود", "محمد أيمن سعيد داوود", "اسراء أيمن سعيد داوود"]},
+    {
+        "id": 80,
+        "name": "اسماء صلاح الدين ابراهيم",
+        "position": "member HR",
+        "familyMembers": ["هبة وحيد سيد أحمد", "أميرة صلاح الدين ابراهيم", "ايمان صلاح الدين ابراهيم", "ابراهيم صلاح الدين ابراهيم"]},
+    {
+        "id": 81,
+        "name": "منه سامح كمال محمد",
+        "position": "oc member",
+        "familyMembers": ["سامح كمال محمد حسين", "مني احمد اسماعيل", "احمد سامح كمال", "سارة سامح كمال", "هاجر سامح كمال"]},
+    {
+        "id": 82,
+        "name": "روان محمد ابراهيم باشا",
+        "position": "oc member",
+        "familyMembers": ["محمد ابراهيم باشا", "نعمة قاسم حواش", "احمد محمد باشا", "رويدة محمد باشا", "روضة محمد باشا", "روفيدا محمد باشا"]},
+    {
+        "id": 83,
+        "name": "منه السيد حجازي",
+        "position": "oc member",
+        "familyMembers": ["السيد عبداللاه حجازي", "حنان ابراهيم البسومي", "مايا السيد حجازى", "عمر السيد حجازى", "مي السيد حجازى", "محمد السيد حجازى"]},
+    {
+        "id": 84,
+        "name": "مريم عادل شعيب",
+        "position": "oc member",
+        "familyMembers": ["عادل شعيب", "فايزة عبد القوي", "احمد عادل شعيب", "محمد عادل شعيب", "كريمة عادل شعيب"]},
+    {
+        "id": 85,
+        "name": "شيماء محمد عبدالقادر أبو يونس",
+        "position": "member HR",
+        "familyMembers": ["عزة عبدالعزيز سلام", "ولاء محمد عبدالقادر أبو يونس", "دعاء محمد عبدالقادر أبو يونس", "لمياء محمد عبدالقادر أبو يونس"]},
+    {
+        "id": 86,
+        "name": "آلاء صبرى",
+        "position": "PC member",
+        "familyMembers": ["صبرى عبد القادر", "هالة عبد العزيز", "محمد صبرى", "أسماء صبرى"]},
+    {
+        "id": 87,
+        "name": "محمد هشام",
+        "position": "PC member",
+        "familyMembers": ["هشام محمد", "هبة رجب", "عبد الرحمن هشام", "عبيدة هشام", "منة هشام"]},
+    {
+        "id": 88,
+        "name": "خلود محمد",
+        "position": "PC member",
+        "familyMembers": ["سوزان السيد", "أحمد محمد", "محمود محمد", "عبد الهادى محمد", "منه محمد", "محمد محمد", "محمد عبد الهادى"]},
+    {
+        "id": 89,
+        "name": "ابراهيم عطية جاد عبدالمطلب ابو الخير",
+        "position": "member MP",
+        "familyMembers": ["عطية جاد عبدالمطلب ابو الخير", "كوثر شعبان محمد شعيب", "يوسف عطية جاد عبدالمطلب ابو الخير"]},
+    {
+        "id": 90,
+        "name": "ايثار محمد ابراهيم الجيزاوى",
+        "position": "member MP",
+        "familyMembers": ["محمد ابراهيم الجيزاوى", "صفاء سعيد الجيزاوى", "ابراهيم محمد ابراهيم الجيزاوى", "تقى محمد ابراهيم الجيزاوى", "اواب محمد ابراهيم الجيزاوى", "ادم محمد ابراهيم الجيزاوى"]},
+    {
+        "id": 91,
+        "name": "سما اشرف شعبان",
+        "position": "pr member",
+        "familyMembers": ["أشرف شعبان عبدالله شعبان", "أمينة رمضان علي صالح", "محمد أشرف شعبان", "شمس أشرف شعبان", "أمينة محمد السيد جبريل"]},
+    {
+        "id": 92,
+        "name": "يمني شريف",
+        "position": "pr member",
+        "familyMembers": ["شريف محمود هنيدي", "شيماء محمد رجب", "سما شريف", "سجى شريف", "محمود شريف"]},
+    {
+        "id": 93,
+        "name": "مريم ابراهيم",
+        "position": "pr member",
+        "familyMembers": ["رانيا عبدالله", "شروق ابراهيم", "فاطيما ابراهيم", "عمر ابراهيم"]},
+    {
+        "id": 94,
+        "name": "احمد صادق محمد",
+        "position": "pr member",
+        "familyMembers": ["صادق محمد ابراهيم", "نانسي مرتضى صبري", "أسامه صادق محمد", "إيمان صادق محمد"]},
+    {
+        "id": 95,
+        "name": "ملك اشرف فارس الصعيدي",
+        "position": "pr member",
+        "familyMembers": ["أشرف أحمد فارس الصعيدى", "فوزية سليمان ربيع مزد", "فارس أشرف فارس", "محمد أشرف فارس"]},
+    {
+        "id": 96,
+        "name": "اسماء احمد محمد امبابي",
+        "position": "pr member",
+        "familyMembers": ["احمد محمد إمبابي الصبحي", "هدي كامل علي رضوان", "مريم أحمد محمد امبابي", "منه أحمد محمد امبابي", "محمد أحمد محمد امبابي", "ألاء أحمد محمد امبابي", "أروي أحمد محمد امبابي"]},
+    {
+        "id": 97,
+        "name": "نيفين مجدي بلال",
+        "position": "pr member",
+        "familyMembers": ["مجدي محمد بلال", "نجلاء عبد العزيز الحداد", "ريم مجدي بلال", "محمد مجدي بلال", "احمد مجدي بلال", "عبد العزيز مجدي بلال"]},
+    {
+        "id": 98,
+        "name": "نديم عبد الله عبدالعزيز مهينه",
+        "position": "pr member",
+        "familyMembers": ["نوارة عبدالله عبدالعزيز مهينه", "آمال محمد عبدالخالق مهينه"]},
+    {
+        "id": 99,
+        "name": "مريم خالد",
+        "position": "PC member",
+        "familyMembers": ["خالد محمد", "سامية محمود", "محمد خالد", "أحمد خالد", "ندى خالد", "أميرة خالد"]},
+    {
+        "id": 100,
+        "name": "محمد علاء",
+        "position": "pr member",
+        "familyMembers": ["علاء محمد عبدالجبار", "فاطمة علاء عبد الجبار", "سمر علاء عبدالجبار"]},
+    {
+        "id": 101,
+        "name": "منه الله فتحي محمد الشرقاوي",
+        "position": "pr member",
+        "familyMembers": ["فتحى محمد الشرقاوي", "عزة شبل سالمان", "رباب فتحى محمد الشرقاوي", "محمد فتحي محمد الشرقاوي"]},
+    {
+        "id": 102,
+        "name": "الاء الجرف",
+        "position": "pr member",
+        "familyMembers": ["أحمد إبراهيم الجرف", "صباح محمد أبو شوشة", "خالد أحمد الجرف", "ايمان أحمد الجرف", "نور أحمد الجرف"]},
+    {
+        "id": 103,
+        "name": "دعاء صبحى محمد عبدالفتاح شكر",
+        "position": "member HR",
+        "familyMembers": ["صبحى محمد عبدالفتاح شكر", "وفاء محمد عبدالرؤوف شكر", "مى صبحى محمد عبدالفتاح شكر", "روضة صبحى محمد عبدالفتاح شكر", "محمد صبحى محمد عبدالفتاح شكر"]},
+    {
+        "id": 104,
+        "name": "أمنية هيكل",
+        "position": "PC member",
+        "familyMembers": ["عبد اللطيف هيكل", "ليلى على", "أمل هيكل", "نهلة هيكل", "شيماء هيكل", "محمد عبد اللطيف"]},
+    {
+        "id": 105,
+        "name": "ريهام شعبان",
+        "position": "HR member",
+        "familyMembers": ["عبدالله شعبان", "هانم شعبان", "صفاء شعبان", "شيرين شعبان", "رانيا شعبان"]}
+];
+        function getMemberIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get("id")) || 1;
+   }
+        function displayMember(member) {
+            const memberContainer = document.getElementById("member-info");
+            memberContainer.innerHTML = `
+                <h2>Doctors Towards Life (DTL) Member Discount</h2>
+                <p>Member Name: <strong>${member.name}</strong></p>
+                <div class="family">
+                    <h3>Family Members</h3>
+                    ${member.familyMembers.map(member => `<strong>${member}</strong>`).join('')}
+                </div>
+                <p class="discount"><button onclick="showPopup()">Show Discount</button></p>
+            `;
+   }
+        function showPopup() {
+            document.getElementById("discount-popup").style.display = 'block';
+            document.getElementById("overlay").style.display = 'block';
+   }
+        function closePopup() {
+            document.getElementById("discount-popup").style.display = 'none';
+            document.getElementById("overlay").style.display = 'none';
+   }
+        const memberId = getMemberIdFromUrl();
+        const member = members.find(m => m.id === memberId) || members[0];
+        displayMember(member);
+    </script>
+</body>
+</html>
